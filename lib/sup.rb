@@ -8,7 +8,7 @@ require 'zlib'
 require 'thread'
 require 'fileutils'
 require 'locale'
-require 'ncursesw'
+require 'curses'
 require 'rmail'
 begin
   require 'fastthread'
@@ -254,7 +254,7 @@ EOS
 
     managers.each { |x| x.deinstantiate! if x.instantiated? }
 
-    @log_io.close if @log_io
+    @log_io.close
     @log_io = nil
     $config = nil
   end
@@ -334,7 +334,9 @@ EOM
       :slip_rows => 0,
       :col_jump => 2,
       :stem_language => "english",
-      :sync_back_to_maildir => false
+      :sync_back_to_maildir => false,
+      :sync_labels_to_xkeywords => false,
+      :format_flowed => true
     }
     if File.exists? filename
       config = Redwood::load_yaml_obj filename
