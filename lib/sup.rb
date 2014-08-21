@@ -336,6 +336,7 @@ EOM
       :continuous_scroll => false,
       :always_edit_async => false,
       :format_flowed => true,
+      :sync_labels_to_xkeywords => false,
     }
     if File.exists? filename
       config = Redwood::load_yaml_obj filename
